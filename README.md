@@ -1,11 +1,5 @@
 ## Sydni Liotta, RDN
 
-------
-layout: default
-title: Data Analysis Projects
-permalink: /projects/
---------
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
