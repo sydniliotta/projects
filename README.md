@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <title>Data Analysis Projects</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -148,6 +148,8 @@
        <h3>Question: What key trends and patient demographics can we uncover from our 2023 flu shot data, and how can these insights inform strategies to improve vaccination outreach?</h3>
     
     <p><a href="https://public.tableau.com/views/ImmunizationFluShot2023/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="button">View Tableau Dashboard</a></p>
+https://github.com/sydniliotta/portfolio/blob/main/images/
+    <img src="https://raw.githubusercontent.com/sydniliotta/portfolio/main/images/Flu%20Shot%20Analysis%202023.png" alt="Cause of Death Pareto Chart" style="max-width:100%; height:auto; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
     <p>
       In this project, I analyzed flu shot data from a hospital system for the year 2023. I used SQL to extract anonymized, synthetic data on patients who received the flu vaccine (this is not real patient data) and then cleaned and prepared the dataset for analysis.
       Leveraging Tableau, I built interactive visualizations to explore key trends, such as vaccination timing, patient demographics, and overall vaccination distribution. These dashboards provide actionable insights that could support public health decision-making and 
