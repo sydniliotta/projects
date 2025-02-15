@@ -1,11 +1,9 @@
-# Data Analysis Projects
 ## Sydni Liotta, RDN
 
 ------
 layout: default
-title: Projects
+title: Data Analysis Projects
 permalink: /projects/
-<!DOCTYPE html>
 --------
 
 <!DOCTYPE html>
@@ -152,13 +150,20 @@ permalink: /projects/
 </head>
 <body>
   <div class="container">
-    <h1>Flu Shots Dashboard Project</h1>
+    <h2>Project # 1 Flu Shots Dashboard</h2>
+       <h3>Question: What key trends and patient demographics can we uncover from our 2023 flu shot data, and how can these insights inform strategies to improve vaccination outreach?</h3>
+    
+    <p><a href="https://public.tableau.com/views/ImmunizationFluShot2023/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="button">View Tableau Dashboard</a></p>
     <p>
-      This project tracks how many patients received flu shots in 2023. I used SQL to extract and transform data from our hospital system, and then created visualizations in Tableau.
+      In this project, I analyzed flu shot data from a hospital system for the year 2023. I used SQL to extract anonymized, synthetic data on patients who received the flu vaccine (this is not real patient data) and then cleaned and prepared the dataset for analysis.
+      Leveraging Tableau, I built interactive visualizations to explore key trends, such as vaccination timing, patient demographics, and overall vaccination distribution. These dashboards provide actionable insights that could support public health decision-making and 
+      strategic planning.
+       This project highlights my proficiency in SQL for data extraction and Tableau for data visualization, as well as my commitment to ethical data handling in healthcare analytics.
+        
     </p>
     <h2>SQL Code</h2>
     <pre><code>
-/* Flu Shots Dashboard - SQL & Tableau
+/* Flu Shots Dashboard 
    Build a dashboard to track flu shots in 2023 with the following metrics:
      1. Total % of patients getting flu shots, stratified by:
           - Age
