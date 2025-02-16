@@ -19,6 +19,7 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
     }
     h1, h2, h3, h4 {
       color: #333;
@@ -65,30 +66,24 @@
 <div class="container">
   <h1>Data Analytics Projects</h1>
   <h2>Sydni Liotta, RDN</h2>
-
   <p><a href="/portfolio/" class="button">Back to Home</a></p>
+</div>
 
+<div class="container">
   <h2>Project #1: Flu Shots Dashboard</h2>
   <h3>Question: How can we analyze flu shot compliance rates across different patient demographics and geographic regions to improve outreach efforts?</h3>
-
   <p><a href="https://public.tableau.com/views/ImmunizationFluShot2023/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="button">View Tableau Dashboard</a></p>
-
   <div class="image-container">
     <img src="https://raw.githubusercontent.com/sydniliotta/portfolio/main/images/Flu%20Shot%20Analysis%202023.png" alt="Flu Shot Analysis 2023">
   </div>
-
   <h3>Insights:</h3>
   <ul>
     <li>The biggest jumps in vaccinations occurred between March and April, suggesting an effective campaign or increased patient engagement during this time.</li>
     <li>The 65+ age group (28%) has a surprisingly low rate despite being a high-risk population. This could indicate barriers such as accessibility, awareness, or vaccine hesitancy.</li>
     <li>Targeted interventions may be needed in lower-performing counties like Hampden (38%), Nantucket (38%), and Suffolk (37%).</li>
   </ul>
-
   <h3>Process:</h3>
-  <p>
-    I used SQL to extract anonymized, synthetic patient data on flu vaccinations. Using Tableau, I built interactive visualizations to uncover key trends, including vaccination timing, patient demographics, and overall distribution.
-  </p>
-
+  <p>I used SQL to extract anonymized, synthetic patient data on flu vaccinations. Using Tableau, I built interactive visualizations to uncover key trends, including vaccination timing, patient demographics, and overall distribution.</p>
   <h2>SQL Code:</h2>
   <pre><code>
 WITH flushot2023 AS (
@@ -126,15 +121,53 @@ LEFT JOIN flushot2023 AS flushot ON pat.id = flushot.patient
 WHERE pat.id IN (SELECT patient FROM activepts);
   </code></pre>
 
+  <h2>Tableau Steps</h2>
+
+<h4>1. Prepare Data in Tableau</h4>
+<ul>
+    <li>Import the dataset containing patient flu shot records.
+</ul>
+
+<h4>2. Create Age Group Buckets</h4>
+<p>Create a calculated field named <strong>Age Group</strong> with the following formula:</p>
+<pre><code>
+    IF [Age] >= 0 AND [Age] <= 17 THEN '0-17'
+    ELSEIF [Age] >= 18 AND [Age] <= 33 THEN '18-33'
+    ELSEIF [Age] >= 34 AND [Age] <= 50 THEN '34-50'
+    ELSEIF [Age] >= 51 AND [Age] <= 65 THEN '51-65'
+    ELSE '65+'
+    END
+</code></pre>
+
+<h4>3. Calculate Flu Shot Percentage</h4>
+  <li>Create a calculated field called <strong>Flu Shot Indicator</strong>:IF [Flu Shot] = 1 THEN 1 ELSE 0 END </li>
+
+<h4>4. Show Total Compliance and Total Flu Shots Given</h4>
+  <li>Create two key metrics:</p></li>
+    <li>Total Patients in Dataset: { FIXED : SUM([# of Records]) }</li>
+    <li> Total Flu Shots Given:  SUM([Flu Shot Indicator])</li>
+      
+<h4>5. Create a Running Total of Flu Shots Given</h4>
+<ul>
+    <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
+    <li>Drag <strong>Date</strong> (flu shot administration date) to <strong>Rows</strong>.</li>
+    <li>Convert into a <strong>Line Chart</strong>.</li>
+</ul>
+</div>
+
+<div class="container">
   <h2>Project #2: Analyzing Cause of Death Data - Worldwide</h2>
   <h3>Question: What are the primary causes of death that contribute the most to overall mortality, and how can this insight guide public health priorities?</h3>
-
   <p><a href="https://public.tableau.com/views/TopCausesofDeath-Pareto/TopCausesofDeath-Pareto" target="_blank" class="button">View Tableau Dashboard</a></p>
-
   <div class="image-container">
     <img src="https://raw.githubusercontent.com/sydniliotta/portfolio/main/images/Cause%20of%20Death%20Pareto.png" alt="Cause of Death Pareto Chart">
   </div>
-
+  <h3>Insights:</h3>
+  <ul>
+    <li>The leading causes of death account for the majority of mortality, helping public health officials prioritize interventions.</li>
+    <li>Applying the Pareto principle (80/20 rule) helps target resources effectively.</li>
+    <li>The dynamic parameter allows adjusting the threshold to visualize different cutoffs.</li>
+  </ul>
   <h3>Process:</h3>
   <h4>1. Data Preparation:</h4>
   <ul>
@@ -146,21 +179,12 @@ REPLACE(REPLACE([Reason for Death],'Deaths -',''),'- Sex: Both - Age: All Ages (
       </code></pre>
     </li>
   </ul>
-
   <h4>2. Building the Pareto Chart:</h4>
   <ul>
     <li>Created a dual-axis visualization using Deaths and a running total.</li>
     <li>Converted the second axis into a percentage cumulative line graph.</li>
     <li>Filtered to show the top causes contributing to 80% of total deaths.</li>
   </ul>
-
-  <h3>Insights:</h3>
-  <ul>
-    <li>The leading causes of death account for the majority of mortality, helping public health officials prioritize interventions.</li>
-    <li>Applying the Pareto principle (80/20 rule) helps target resources effectively.</li>
-    <li>The dynamic parameter allows adjusting the threshold to visualize different cutoffs.</li>
-  </ul>
-
   <p><a href="/portfolio/" class="button">Back to Home</a></p>
 </div>
 
