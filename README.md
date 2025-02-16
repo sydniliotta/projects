@@ -2,8 +2,6 @@
 ## Sydni Liotta, RDN
 
 
-    <p><a href="/portfolio/" class="button">Back to Home</a></p>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,6 +38,7 @@
     }
   </style>
 </head>
+        <p><a href="/portfolio/" class="button">Back to Home</a></p>
 <body>
   <div class="container">
     <h2>Project # 1 Flu Shots Dashboard</h2>
