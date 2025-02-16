@@ -47,6 +47,13 @@
     <p><a href="https://public.tableau.com/views/ImmunizationFluShot2023/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="button">View Tableau Dashboard</a></p>
     <img src="https://raw.githubusercontent.com/sydniliotta/portfolio/main/images/Flu%20Shot%20Analysis%202023.png" alt="Cause of Death Pareto Chart" style="max-width:100%; height:auto; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
     <p>
+          <h3>Insights:</h3>
+    <ul>
+        <li>The biggest jumps in vaccinations occurred between March and April, suggesting an effective campaign or increased patient engagement during this time. </li>
+        <li>The 65+ age group (28%) has a surprisingly low rate despite being a high-risk population. This could indicate barriers such as accessibility, awareness, or vaccine hesitancy.</li>
+        <li>Targeted interventions may be needed in lower-performing counties like Hampden (38%), Nantucket (38%), and Suffolk (37%). </li>
+
+<h3>Process</h3>
       I used SQL to extract anonymized, synthetic patient data on flu vaccinations. Using Tableau, I built interactive visualizations to uncover key trends, including vaccination timing, patient demographics, and overall distribution. Additionally, I provided a county-level breakdown to identify geographic areas with lower vaccination rates, helping to target interventions and improve outreach efforts. These dashboards offer actionable insights to support public health decision-making and strategic planning.
       
     </p>
@@ -92,13 +99,10 @@ WHERE pat.id IN (SELECT patient FROM activepts);
 
         <h2>Tableau Steps</h2>
 
-    <h4>1. Prepare Data in Tableau</h4>
-    <ul>
-        <li>Import the dataset containing patient flu shot records.</li>
-    </ul>
+    <h4>1. Import and Prepare Data in Tableau</h4>
 
     <h4>2. Create Age Group Buckets</h4>
-    <p>Create a calculated field named <strong>Age Group</strong> with the following formula:</p>
+      <li>Create a calculated field named <strong>Age Group</strong> with the following formula:.</li>
     <pre><code>
         IF [Age] >= 0 AND [Age] <= 17 THEN '0-17'
         ELSEIF [Age] >= 18 AND [Age] <= 33 THEN '18-33'
@@ -109,26 +113,16 @@ WHERE pat.id IN (SELECT patient FROM activepts);
     </code></pre>
 
     <h4>3. Calculate Flu Shot Percentage</h4>
-    <p>Create a calculated field called <strong>Flu Shot Indicator</strong>:</p>
-    <pre><code>
-      IF [Flu Shot] = 1 THEN 1 ELSE 0 END
-    </code></pre>
+        <li>Create a calculated field called <strong>Flu Shot Indicator</strong>: IF [Flu Shot] = 1 THEN 1 ELSE 0 END </li>
 
+    <h4>6. Show Total Compliance and Total Flu Shots Given</h4>
+      <li> Create two key metrics:</p>
 
-    <h3>6. Show Total Compliance and Total Flu Shots Given</h3>
-    <p>Create two key metrics using FIXED LOD Calculation:</p>
+    <p><strong>Total Patients in Dataset: { FIXED : SUM([# of Records]) }</strong></p>
 
-    <p><strong>Total Patients in Dataset:</strong></p>
-    <pre><code>
-      { FIXED : SUM([# of Records]) }
-    </code></pre>
+    <p><strong>Total Flu Shots Given:SUM([Flu Shot Indicator]) </strong></p>
 
-    <p><strong>Total Flu Shots Given:</strong></p>
-    <pre><code>
-      SUM([Flu Shot Indicator])
-    </code></pre>
-
-    <h3>7. Create a Running Total of Flu Shots Given</h3>
+    <h4>7. Create a Running Total of Flu Shots Given</h4>
     <ul>
         <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
         <li>Drag <strong>Date</strong> (flu shot administration date) to <strong>Rows</strong>.</li>
@@ -138,6 +132,10 @@ WHERE pat.id IN (SELECT patient FROM activepts);
             </ul>
         </li>
         <li>Convert into a <strong>Line Chart</strong>.</li>
+
+   
+    </ul>
+    
     </ul>
 
 </div>
