@@ -1,6 +1,9 @@
 # Data Analytics Projects 
 ## Sydni Liotta, RDN
 
+
+    <p><a href="/portfolio/" class="button">Back to Home</a></p>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -247,8 +250,10 @@ WHERE pat.id IN (SELECT patient FROM activepts);
         <li>The dynamic parameter allows for adjusting the percentage threshold, demonstrating how different cutoffs impact the analysis.</li>
         <li>By applying the Pareto principle, we can target resources where they will have the greatest impact on reducing mortality. If we aim to reduce deaths most effectively, this is where we should start.</li>
     </ul>
-    <p><a href="/portfolio/" class="button">Back to Home</a></p>
 </div>
 </body>
+  
+    <p><a href="/portfolio/" class="button">Back to Home</a></p>
+
 </html>
 
