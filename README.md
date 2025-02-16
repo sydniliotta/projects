@@ -43,14 +43,10 @@
        <h3>Question: What key trends and patient demographics can we uncover from our 2023 flu shot data, and how can these insights inform strategies to improve vaccination outreach?</h3>
     
     <p><a href="https://public.tableau.com/views/ImmunizationFluShot2023/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="button">View Tableau Dashboard</a></p>
-https://github.com/sydniliotta/portfolio/blob/main/images/
     <img src="https://raw.githubusercontent.com/sydniliotta/portfolio/main/images/Flu%20Shot%20Analysis%202023.png" alt="Cause of Death Pareto Chart" style="max-width:100%; height:auto; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
     <p>
-      In this project, I analyzed flu shot data from a hospital system for the year 2023. I used SQL to extract anonymized, synthetic data on patients who received the flu vaccine (this is not real patient data) and then cleaned and prepared the dataset for analysis.
-      Leveraging Tableau, I built interactive visualizations to explore key trends, such as vaccination timing, patient demographics, and overall vaccination distribution. These dashboards provide actionable insights that could support public health decision-making and 
-      strategic planning.
-       This project highlights my proficiency in SQL for data extraction and Tableau for data visualization, as well as my commitment to ethical data handling in healthcare analytics.
-        
+      I used SQL to extract anonymized, synthetic data on patients who received the flu vaccine and then cleaned and prepared the dataset for analysis. Leveraging Tableau, I built interactive visualizations to explore key trends, such as vaccination timing, patient demographics, and overall vaccination distribution. These dashboards provide actionable insights that could support public health decision-making and strategic planning.
+      
     </p>
     <h2>SQL Code</h2>
     <pre><code>
@@ -92,6 +88,83 @@ WHERE pat.id IN (SELECT patient FROM activepts);
     <p>
       This query forms the basis of the Tableau dashboard, which visualizes key metrics such as patient demographics, running totals, and overall counts of flu shots administered in 2023.
     </p>
+
+        <h2>Tableau Steps</h2>
+
+    <h3>1. Prepare Data in Tableau</h3>
+    <ul>
+        <li>Import the dataset containing patient flu shot records.</li>
+        <li>Ensure all necessary fields (patient ID, age, race, county, flu shot status, etc.) are present.</li>
+    </ul>
+
+    <h3>2. Create Age Group Buckets</h3>
+    <p>Create a calculated field named <strong>Age Group</strong> with the following formula:</p>
+    <pre><code>
+IF [Age] >= 0 AND [Age] <= 17 THEN '0-17'
+ELSEIF [Age] >= 18 AND [Age] <= 33 THEN '18-33'
+ELSEIF [Age] >= 34 AND [Age] <= 48 THEN '34-48'
+ELSEIF [Age] >= 49 AND [Age] <= 64 THEN '49-64'
+ELSE '65+'
+END
+    </code></pre>
+
+    <h3>3. Calculate Flu Shot Percentage</h3>
+    <p>Create a calculated field called <strong>Flu Shot Indicator</strong>:</p>
+    <pre><code>
+IF [Flu Shot] = 1 THEN 1 ELSE 0 END
+    </code></pre>
+    
+    <p>Create another field called <strong>Total Flu Shots %</strong>:</p>
+    <pre><code>
+AVG([Flu Shot Indicator])
+    </code></pre>
+
+    <h3>4. Create a Map for County Flu Shot Rates</h3>
+    <ul>
+        <li>Drag <strong>County</strong> to <strong>Rows</strong>.</li>
+        <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
+        <li>Change the mark type to <strong>Map</strong>.</li>
+        <li>Apply a <strong>color gradient</strong> based on percentage vaccinated.</li>
+    </ul>
+
+    <h3>5. Create a Patient Flu Shot Tracking List</h3>
+    <ul>
+        <li>Create a worksheet to track patients who received flu shots.</li>
+        <li>Drag <strong>Patient ID</strong> to <strong>Rows</strong>.</li>
+        <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
+        <li>Format so that "1" means vaccinated and "0" means not vaccinated.</li>
+    </ul>
+
+    <h3>6. Show Total Compliance and Total Flu Shots Given</h3>
+    <p>Create two key metrics using FIXED LOD Calculation:</p>
+
+    <p><strong>Total Patients in Dataset:</strong></p>
+    <pre><code>
+{ FIXED : SUM([# of Records]) }
+    </code></pre>
+
+    <p><strong>Total Flu Shots Given:</strong></p>
+    <pre><code>
+SUM([Flu Shot Indicator])
+    </code></pre>
+
+    <h3>7. Create a Running Total of Flu Shots Given</h3>
+    <ul>
+        <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
+        <li>Drag <strong>Date</strong> (flu shot administration date) to <strong>Rows</strong>.</li>
+        <li>Convert into a <strong>Running Total</strong>:
+            <ul>
+                <li>Right-click <strong>Flu Shot Indicator</strong> > <strong>Quick Table Calculation</strong> > <strong>Running Total</strong>.</li>
+            </ul>
+        </li>
+        <li>Convert into a <strong>Line Chart</strong>.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
+
   </div>
 </body>
 </html>
