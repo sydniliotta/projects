@@ -1,11 +1,10 @@
 ## Sydni Liotta, RDN
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analysis Projects</title>
+    <title></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,7 +59,7 @@
     </style>
 </head>
 <body>
-<h1>Projects</h1> <!-- Moved outside the box -->
+<h1></h1> <!-- Moved outside the box -->
 <div class="container">
     <h2>Project #1: Analyzing Cause of Death Data - Worldwide</h2>
     <h3>Question: What are the primary causes of death that contribute the most to overall mortality, and how can this insight guide public health priorities?</h3>
@@ -105,7 +104,7 @@
 </body>
 </html>
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
