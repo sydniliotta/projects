@@ -121,11 +121,11 @@ LEFT JOIN flushot2023 AS flushot ON pat.id = flushot.patient
 WHERE pat.id IN (SELECT patient FROM activepts);
   </code></pre>
 
-  <h2>Tableau Steps</h2>
+<h2>Tableau Steps</h2>
 
 <h4>1. Prepare Data in Tableau</h4>
 <ul>
-    <li>Import the dataset containing patient flu shot records.
+    <li>Import the dataset containing patient flu shot records.</li>
 </ul>
 
 <h4>2. Create Age Group Buckets</h4>
@@ -140,19 +140,29 @@ WHERE pat.id IN (SELECT patient FROM activepts);
 </code></pre>
 
 <h4>3. Calculate Flu Shot Percentage</h4>
-  <li>Create a calculated field called <strong>Flu Shot Indicator</strong>:IF [Flu Shot] = 1 THEN 1 ELSE 0 END </li>
+<p>Create a calculated field called <strong>Flu Shot Indicator</strong>:</p>
+<pre><code>
+    IF [Flu Shot] = 1 THEN 1 ELSE 0 END
+</code></pre>
 
 <h4>4. Show Total Compliance and Total Flu Shots Given</h4>
-  <li>Create two key metrics:</p></li>
-    <li>Total Patients in Dataset: { FIXED : SUM([# of Records]) }</li>
-    <li> Total Flu Shots Given:  SUM([Flu Shot Indicator])</li>
-      
+<p>Create two key metrics using FIXED LOD Calculation:</p>
+<p><strong>Total Patients in Dataset:</strong></p>
+<pre><code>
+    { FIXED : SUM([# of Records]) }
+</code></pre>
+<p><strong>Total Flu Shots Given:</strong></p>
+<pre><code>
+    SUM([Flu Shot Indicator])
+</code></pre>
+
 <h4>5. Create a Running Total of Flu Shots Given</h4>
 <ul>
     <li>Drag <strong>Flu Shot Indicator</strong> to <strong>Columns</strong>.</li>
     <li>Drag <strong>Date</strong> (flu shot administration date) to <strong>Rows</strong>.</li>
     <li>Convert into a <strong>Line Chart</strong>.</li>
 </ul>
+
 </div>
 
 <div class="container">
